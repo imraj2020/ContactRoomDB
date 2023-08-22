@@ -1,13 +1,16 @@
 package com.cse.contactroomdb
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.cse.contactroomdb.ContactRecycleView.ContactAdapter
+import com.cse.contactroomdb.DetailsActivity.contactkey.contactKey
 import com.cse.contactroomdb.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ContactAdapter.Listener {
     lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,29 +35,34 @@ class MainActivity : AppCompatActivity() {
 
         })
 
-        binding.button2.setOnClickListener(View.OnClickListener {
+        binding.btnget.setOnClickListener(View.OnClickListener {
 
             binding.mylinear.visibility = View.GONE
-            binding.mylinear2.visibility= View.VISIBLE
+            binding.mylinear2.visibility = View.VISIBLE
 
             val contactList: List<Contact> = db.getContactDao().AllContact()
-            var contactlist = ""
+            val adapter = ContactAdapter(contactList, this@MainActivity)
 
-            contactList.forEach {
-                contactlist += "${it.name + " "},${it.email + " "},${it.phone + " "}\n\n"
-            }
+            binding.contactRCV.adapter = adapter
 
-            binding.contactlists.text = contactlist
 
         })
 
         binding.backbtn.setOnClickListener(View.OnClickListener {
             binding.mylinear.visibility = View.VISIBLE
-            binding.mylinear2.visibility= View.GONE
+            binding.mylinear2.visibility = View.GONE
         })
 
 
+    }
 
+    override fun contactclick(contact: Contact) {
+
+
+        val intent = Intent(this@MainActivity, DetailsActivity::class.java)
+        intent.putExtra(DetailsActivity.contactKey, contact)
+        startActivity(intent)
 
     }
 }
+
