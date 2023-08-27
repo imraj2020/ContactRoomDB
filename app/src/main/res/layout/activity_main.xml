@@ -9,76 +9,12 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <LinearLayout
-        android:id="@+id/mylinear2"
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:visibility="gone">
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="600dp">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/contactRCV"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="italic"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_contact"></androidx.recyclerview.widget.RecyclerView>
-
-        </ScrollView>
-
-        <Button
-            android:id="@+id/backbtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Go Back"></Button>
-
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/mylinear"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:visibility="visible">
-
-        <EditText
-            android:id="@+id/editText1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Name" />
-
-        <EditText
-            android:id="@+id/editText2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Email" />
-
-        <EditText
-            android:id="@+id/editText3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Phone" />
-
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Save Data" />
-
-        <Button
-            android:id="@+id/btnget"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="View Data" />
-
-    </LinearLayout>
-
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/main_nav" />
 </LinearLayout>

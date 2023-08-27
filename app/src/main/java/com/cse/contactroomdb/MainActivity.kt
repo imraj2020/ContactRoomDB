@@ -18,40 +18,12 @@ class MainActivity : AppCompatActivity(), ContactAdapter.Listener {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var db = Room.databaseBuilder(applicationContext, ContactDatabase::class.java, "Contact.db")
-            .allowMainThreadQueries().build()
-
-        binding.button1.setOnClickListener(View.OnClickListener {
-
-            val Contacts = Contact(
-                0,
-                binding.editText1.text.toString(),
-                binding.editText2.text.toString(),
-                binding.editText3.text.toString()
-            )
-
-            db.getContactDao().InsertContact(Contacts)
 
 
-        })
-
-        binding.btnget.setOnClickListener(View.OnClickListener {
-
-            binding.mylinear.visibility = View.GONE
-            binding.mylinear2.visibility = View.VISIBLE
-
-            val contactList: List<Contact> = db.getContactDao().AllContact()
-            val adapter = ContactAdapter(contactList, this@MainActivity)
-
-            binding.contactRCV.adapter = adapter
 
 
-        })
 
-        binding.backbtn.setOnClickListener(View.OnClickListener {
-            binding.mylinear.visibility = View.VISIBLE
-            binding.mylinear2.visibility = View.GONE
-        })
+
 
 
     }
