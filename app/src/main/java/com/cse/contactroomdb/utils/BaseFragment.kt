@@ -1,4 +1,4 @@
-package com.cse.contactroomdb
+package com.cse.contactroomdb.utils
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,12 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.room.Room
 import androidx.viewbinding.ViewBinding
+import com.cse.contactroomdb.db.ContactDatabase
 
 
 abstract class BaseFragment<VB : ViewBinding>(
     private var bindingInflater: (inflater: LayoutInflater) -> VB
 ) : Fragment() {
-    lateinit var db:ContactDatabase
+
     private var _binding: VB? = null
     val binding: VB get()  = _binding as VB
 
@@ -21,8 +22,7 @@ abstract class BaseFragment<VB : ViewBinding>(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        db = Room.databaseBuilder(requireContext(), ContactDatabase::class.java, "Contact.db")
-            .allowMainThreadQueries().build()
+
         _binding = bindingInflater.invoke(inflater)
         return binding.root
     }

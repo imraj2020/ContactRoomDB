@@ -1,34 +1,37 @@
-package com.cse.contactroomdb
+package com.cse.contactroomdb.ui.details
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.room.Room
-import com.cse.contactroomdb.ContactRecycleView.ContactAdapter
+import com.cse.contactroomdb.utils.BaseFragment
+import com.cse.contactroomdb.models.Contact
 import com.cse.contactroomdb.databinding.FragmentDetailsBinding
-import com.cse.contactroomdb.databinding.FragmentHomeBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DetailsFragment : BaseFragment<FragmentDetailsBinding>(FragmentDetailsBinding::inflate) {
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val viewModel: DetailsViewModel by viewModels()
+
         binding.btnsave.setOnClickListener(View.OnClickListener {
 
-            val Contacts = Contact(
+            val contacts = Contact(
                 0,
                 binding.etname.text.toString(),
                 binding.etemail.text.toString(),
                 binding.etphone.text.toString()
             )
 
-            db.getContactDao().InsertContact(Contacts)
 
-            findNavController().navigate(R.id.action_detailsFragment_to_homeFragment)
+            viewModel.insertContact(contacts)
+
+
+            findNavController().popBackStack()
 
 
         })

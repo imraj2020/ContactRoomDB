@@ -1,4 +1,4 @@
-package com.cse.contactroomdb
+package com.cse.contactroomdb.models
 
 import android.os.Parcelable
 import androidx.room.Entity

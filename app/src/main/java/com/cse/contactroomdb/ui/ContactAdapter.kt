@@ -1,19 +1,31 @@
-package com.cse.contactroomdb.ContactRecycleView
+package com.cse.contactroomdb.ui
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView.OnItemClickListener
 import androidx.recyclerview.widget.RecyclerView
-import com.cse.contactroomdb.Contact
+import com.cse.contactroomdb.models.Contact
 import com.cse.contactroomdb.databinding.ItemContactBinding
+import javax.inject.Inject
 
-class ContactAdapter(val contactlist: List<Contact>, var listener: ContactAdapter.Listener) :
-    RecyclerView.Adapter<ContactViewHolder>() {
+//Question Here
+//import androidx.recyclerview.widget.RecyclerView.Adapter
+
+
+class ContactAdapter @Inject constructor(
+    private var contactlist: List<Contact>,
+    private var listener: Listener
+) :
+    RecyclerView.Adapter<ContactAdapter.ContactViewHolder>() {
     interface Listener {
 
         fun contactclick(contact: Contact)
     }
+
+
+    inner class ContactViewHolder(val binding: ItemContactBinding) :
+        RecyclerView.ViewHolder(binding.root)
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactViewHolder {
 
@@ -46,9 +58,7 @@ class ContactAdapter(val contactlist: List<Contact>, var listener: ContactAdapte
         })
 
 
-
-
-
-
     }
+
+
 }

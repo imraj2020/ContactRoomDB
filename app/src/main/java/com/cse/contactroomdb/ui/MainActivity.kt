@@ -1,15 +1,13 @@
-package com.cse.contactroomdb
+package com.cse.contactroomdb.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import androidx.room.Room
-import androidx.room.RoomDatabase
-import com.cse.contactroomdb.ContactRecycleView.ContactAdapter
-import com.cse.contactroomdb.DetailsActivity.contactkey.contactKey
+import com.cse.contactroomdb.models.Contact
 import com.cse.contactroomdb.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity(), ContactAdapter.Listener {
     lateinit var binding: ActivityMainBinding
 
@@ -30,10 +28,10 @@ class MainActivity : AppCompatActivity(), ContactAdapter.Listener {
 
     override fun contactclick(contact: Contact) {
 
-
-        val intent = Intent(this@MainActivity, DetailsActivity::class.java)
-        intent.putExtra(DetailsActivity.contactKey, contact)
-        startActivity(intent)
+//
+//        val intent = Intent(this@MainActivity, DetailsActivity::class.java)
+//        intent.putExtra(DetailsActivity.contactKey, contact)
+//        startActivity(intent)
 
     }
 }
