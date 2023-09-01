@@ -3,11 +3,13 @@ package com.cse.contactroomdb.ui.details
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import com.cse.contactroomdb.utils.BaseFragment
 import com.cse.contactroomdb.models.Contact
 import com.cse.contactroomdb.databinding.FragmentDetailsBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class DetailsFragment : BaseFragment<FragmentDetailsBinding>(FragmentDetailsBinding::inflate) {
@@ -28,7 +30,14 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>(FragmentDetailsBind
             )
 
 
-            viewModel.insertContact(contacts)
+
+
+
+            viewModel.viewModelScope.launch {
+                viewModel.insertContact(contacts)
+            }
+
+            //   viewModel.insertContact(contacts)
 
 
             findNavController().popBackStack()
@@ -38,6 +47,4 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>(FragmentDetailsBind
 
 
     }
-
-
 }

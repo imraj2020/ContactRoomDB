@@ -16,7 +16,7 @@ import javax.inject.Inject
 class DetailsViewModel @Inject constructor(private val repo: ContactRepo) : ViewModel() {
 
 
-    fun insertContact(contact: Contact) {
+ suspend  fun insertContact(contact: Contact) {
         viewModelScope.launch {
             repo.insertContact(contact)
         }
