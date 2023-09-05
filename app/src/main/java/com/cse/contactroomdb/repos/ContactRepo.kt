@@ -9,7 +9,7 @@ class ContactRepo @Inject constructor(private  val  dao: ContactDAO) {
 
 
 
-    fun getAllContact(): LiveData<List<Contact>> {
+   suspend fun getAllContact():List<Contact> {
 
         return dao.AllContact()
     }

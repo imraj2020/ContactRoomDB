@@ -25,6 +25,6 @@ interface ContactDAO {
 
     //Read
     @Query("SELECT * FROM Contact")
-    fun AllContact(): LiveData<List<Contact>>
+   suspend fun AllContact(): List<Contact>
 
 }

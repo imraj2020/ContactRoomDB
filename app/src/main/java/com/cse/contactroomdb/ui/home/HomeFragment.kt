@@ -19,8 +19,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         super.onViewCreated(view, savedInstanceState)
 
 
+        viewModel.getAllContact()
 
-        viewModel.getAllContact().observe(viewLifecycleOwner) {
+        viewModel.allcontact.observe(viewLifecycleOwner) {
 
             val adapter = ContactAdapter(it, this)
             binding.contactRCV.adapter = adapter
