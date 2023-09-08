@@ -8,7 +8,7 @@ import com.cse.contactroomdb.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity(), ContactAdapter.Listener {
+class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,13 +26,6 @@ class MainActivity : AppCompatActivity(), ContactAdapter.Listener {
 
     }
 
-    override fun contactclick(contact: Contact) {
 
-//
-//        val intent = Intent(this@MainActivity, DetailsActivity::class.java)
-//        intent.putExtra(DetailsActivity.contactKey, contact)
-//        startActivity(intent)
-
-    }
 }
 

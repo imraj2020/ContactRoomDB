@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.DetailsActivity">
+    android:layout_height="match_parent">
 
 
     <LinearLayout
@@ -17,29 +16,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/nameTv"
+        <EditText
+            android:id="@+id/nameTvs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Imraj Hossain"
             android:gravity="center"
             android:textAppearance="@style/TextAppearance.Material3.TitleLarge" />
 
-        <TextView
-            android:id="@+id/emailTv"
+        <EditText
+            android:id="@+id/emailTvs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="imrajcsegb@gmail.com"
             android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
 
-        <TextView
-            android:id="@+id/mobileTv"
+        <EditText
+            android:id="@+id/mobileTvs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="01726217140"
             android:textAppearance="@style/TextAppearance.Material3.TitleSmall" />
+
+        <Button
+            android:id="@+id/btnupdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Update Data" />
+
 
     </LinearLayout>
 

@@ -20,6 +20,7 @@ class ContactAdapter @Inject constructor(
     interface Listener {
 
         fun contactclick(contact: Contact)
+        fun deleteclick(contact: Contact)
     }
 
 
@@ -53,9 +54,14 @@ class ContactAdapter @Inject constructor(
         holder.binding.emailTv.text = contact.email
         holder.binding.mobileTv.text = contact.phone
 
+
         holder.itemView.setOnClickListener(View.OnClickListener {
             listener.contactclick(contact)
         })
+
+        holder.binding.deletebtn.setOnClickListener {
+            listener.deleteclick(contact)
+        }
 
 
     }

@@ -18,4 +18,12 @@ class ContactRepo @Inject constructor(private  val  dao: ContactDAO) {
         dao.InsertContact(contact)
     }
 
+    suspend fun deleteContact(contact: Contact) {
+        dao.DeleteContact(contact)
+    }
+
+    suspend fun updateContact(contact: Contact) {
+        dao.UpdateContact(contact)
+    }
+
 }
